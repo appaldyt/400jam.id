@@ -7,26 +7,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-100 flex flex-col min-h-screen">
     
     <!-- Banner -->
     <header class="w-full">
-        <img src="https://via.placeholder.com/1200x300" alt="Banner" class="w-full h-72 object-cover">
+        <img src="/images/site-banner.png" alt="Banner" class="w-full h-72 object-cover">
     </header>
 
-    <main class="max-w-4xl mx-auto p-4">
-        <!-- Headline Section -->
-        <section class="mb-6">
-            <h2 class="text-2xl font-bold mb-4">Top Story</h2>
-            <div class="bg-white shadow-lg rounded-lg p-4">
-                <img src="<%= headline.image %>" alt="<%= headline.title %>" class="w-full h-56 object-cover rounded-lg mb-3">
-                <h3 class="text-xl font-semibold mb-2"><%= headline.title %></h3>
-                <p class="text-gray-600"><%= headline.summary %></p>
-            </div>
-        </section>
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex justify-center space-x-6">
+            <a href="/" class="text-blue-600 hover:text-blue-800 font-semibold">Home</a>
+            <a href="/about" class="text-blue-600 hover:text-blue-800 font-semibold">About</a>
+        </div>
+    </nav>
 
-        <!-- TODO List of Articles -->
-       
+    <main class="max-w-4xl mx-auto p-4 flex-grow">
+        <!-- Kode body ini yg menjadi pintu masuk konten2 yg dikirmkan dari file index.ejs & about.ejs 
+         sehingga ini yg akan terus berubah-->
+         <!-- Sisa tampilanya menggunakan layout.ejs sebagai tamplate tampilan-->
+        <%- body %>
     </main>
 
     <!-- Footer -->

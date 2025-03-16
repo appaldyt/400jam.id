@@ -41,14 +41,18 @@ app.get('/', (req, res) => {
     const headline = {
         title: "Berita Utama Hari Ini",
         summary: "Ringkasan berita utama yang sedang trending.",
-        image: "/images/news-banner.jpg" // Pastikan ada gambar di folder public/images
+        image: "/images/habit.png" // Pastikan ada gambar di folder public/images
     };
 
     res.render("index", { title: "Beranda", headline });
 }); 
-//__dirname ini artinya direktorat/folder yang aktif, lalu digabungkan dengan folder views & file index.ejs karna ada fungsi join()
-//Dan akan memberikan respon yang ada di dalam file index.ejs
+//__dirname ini artinya direktorat/folder yang aktif, lalu digabungkan dengan folder views & file index.js karna ada fungsi join()
+//Dan akan memberikan respon yang ada di dalam file index.js lalu langsung mengakses layout.ejs
 //Ketika kita memanggil modul .render() itu artinya kita menggunakan view engine
+
+app.get('/about', (req, res) => {
+    res.render("about");
+}); 
 
 //Fase 2 : static file
 //Digunakan untuk ketika melakukan requess http://localhost:3000/static atau route
