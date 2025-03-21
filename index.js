@@ -9,13 +9,14 @@ const express = require("express"); //Untuk mengakses node module lalu mengarahk
 const app = express(); //Memanggil function yg ada di dalam folder express
 const expressLayouts = require("express-ejs-layouts"); //Untuk mengakses node modul express-ejs-layouts 
 const path = require('path');
+const supabase = require('./supabase'); //Import modul supabase di file supabase.js
 
 //Menjalankan server
-const port = 3000
+const port = 4000
 app.listen(port, () => {
     console.log(`Server berjalan di http://localhost:${port}`)
 }) 
-// Menjalankanya dengan npm run dev
+// Menjalankanya dengan npm run dev ganti ke concurrently "browser-sync start --config bs-config.js --no-ui --no-notify" "nodemon index.js"
 // dev diambil dari file package.json, dan itu telah ditambahkan manual
 // Perintahkan Ctrl + C untuk mematikan server
 
@@ -37,14 +38,23 @@ app.set('views', path.join(__dirname, 'views'));
 
 //Fase 3 : templating web 1.0
 //Digunakan untuk ketika melakukan requess http://localhost:3000/ atau route to root
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+    const {data : articles, error} = await supabase
+        .from('articles')
+        .select('*'); //Mengaksess semua tabel articles
+
+    if (error) {
+        console.error('Error fetching articles :', error);
+        return res.status(500).send('Error fetching articles');
+    } //Klw erorr jalanan ini
+    
     const headline = {
         title: "Berita Utama Hari Ini",
         summary: "Ringkasan berita utama yang sedang trending.",
         image: "/images/habit.png" // Pastikan ada gambar di folder public/images
     };
 
-    res.render("index", { title: "Beranda", headline });
+    res.render("index", { title: "Beranda", headline, articles }); //Kirim data ini ke index.ejs
 }); 
 //__dirname ini artinya direktorat/folder yang aktif, lalu digabungkan dengan folder views & file index.js karna ada fungsi join()
 //Dan akan memberikan respon yang ada di dalam file index.js lalu langsung mengakses layout.ejs

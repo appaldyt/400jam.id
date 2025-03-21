@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index.js"
+    "start": "nodemon index.js",
+    "dev": "concurrently \"browser-sync start --config bs-config.js --no-ui --no-notify\" \"nodemon index.js\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/appaldyt/400jam.id.git"
+    "url": "concurrently \"browser-sync start --config bs-config.js --no-ui --no-notify\" \"nodemon index.js\""
   },
   "author": "",
   "license": "ISC",
@@ -18,8 +18,14 @@
   },
   "homepage": "https://github.com/appaldyt/400jam.id#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9"
   }
 }

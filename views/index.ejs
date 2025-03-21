@@ -1,19 +1,13 @@
 <!-- Headline Section -->
 <section class="mb-6">
-    <h2 class="text-2xl font-bold mb-4">Top Story</h2>
-    <div class="bg-white shadow-lg rounded-lg p-4">
-        <img src="<%= headline.image %>" alt="<%= headline.title %>" class="w-full h-56 object-cover rounded-lg mb-3">
-        <h3 class="text-xl font-semibold mb-2"><%= headline.title %></h3>
-        <p class="text-gray-600"><%= headline.summary %></p>
-    </div>
-    <div class="bg-white shadow-lg rounded-lg p-4">
-        <img src="<%= headline.image %>" alt="<%= headline.title %>" class="w-full h-56 object-cover rounded-lg mb-3">
-        <h3 class="text-xl font-semibold mb-2"><%= headline.title %></h3>
-        <p class="text-gray-600"><%= headline.summary %></p>
-    </div>
-    <div class="bg-white shadow-lg rounded-lg p-4">
-        <img src="<%= headline.image %>" alt="<%= headline.title %>" class="w-full h-56 object-cover rounded-lg mb-3">
-        <h3 class="text-xl font-semibold mb-2"><%= headline.title %></h3>
-        <p class="text-gray-600"><%= headline.summary %></p>
-    </div>
+    <h2 class="text-2xl font-bold mb-4 bg-red-200">Articles</h2>
+    <% articles.forEach(article => { %>
+        <div class="flex items-start mb-4 article-card">
+            <img src="<%= article.image_url %>" alt="<%= article.title %>" class="w-24 h-24 object-cover rounded-lg mr-4">
+            <div>
+                <h3 class="text-xl font-semibold mb-1"><%= article.title %></h3>
+                <p class="text-gray-600"><%= article.description %></p>
+            </div>
+        </div>
+    <% }); %>
 </section>
