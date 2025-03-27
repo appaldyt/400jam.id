@@ -11,11 +11,17 @@ const expressLayouts = require("express-ejs-layouts"); //Untuk mengakses node mo
 const path = require('path');
 const supabase = require('./supabase'); //Import modul supabase di file supabase.js
 
-//Menjalankan server
-const port = 4000
-app.listen(port, () => {
-    console.log(`Server berjalan di http://localhost:${port}`)
-}) 
+//Menjalankan server di heroku
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+console.log(`Server berjalan di http://localhost:${PORT}`)
+});
+
+//Menjalankan server sebelum masuk ke heroku
+// const port = 4000
+// app.listen(port, () => {
+//     console.log(`Server berjalan di http://localhost:${port}`)
+// }) 
 // Menjalankanya dengan npm run dev ganti ke concurrently "browser-sync start --config bs-config.js --no-ui --no-notify" "nodemon index.js"
 // dev diambil dari file package.json, dan itu telah ditambahkan manual
 // Perintahkan Ctrl + C untuk mematikan server

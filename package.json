@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "dev": "concurrently \"browser-sync start --config bs-config.js --no-ui --no-notify\" \"nodemon index.js\""
   },
   "repository": {
